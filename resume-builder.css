@@ -1,0 +1,219 @@
+/* resume-builder.css */
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .resume-builder {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+
+
+  
+  #sections-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .section-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .section-header:hover {
+    background-color: #f9f9f9;
+  }
+  .section-name[contenteditable="true"] {
+    cursor: text;
+  }
+  
+  .section-name[contenteditable="true"]:focus {
+    outline: none;
+    border-bottom: 1px dashed #ddd;
+  }
+  .section-name {
+    flex-grow: 1;
+    margin-left: 10px;
+  }
+  
+  .edit-button {
+    background-color: transparent;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 14px;
+    border-radius: 50%;
+    padding: 4px;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    margin-left: 10px;
+    
+  }
+  
+  .switch input[type="checkbox"] {
+    display: none;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 20px;
+    transition: 0.4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: 0.4s;
+  }
+  .switch input:checked + .slider {
+    background-color: #EADDFF; /* New color when switch is turned on */
+  }
+  
+  /* Set color and content when switch is on */
+  input[type="checkbox"]:checked + .slider:before {
+    transform: translateX(20px);
+    background-color: #381E72;
+    content: '\2713'; /* Tick symbol */
+    color: #fff;
+    text-align: center;
+    line-height: 16px;
+  }
+  
+  /* Set color and content when switch is off */
+  .slider:before {
+    background-color: #8B8B8B;
+    content: '\2717'; /* Cross symbol */
+    color: #fff;
+    text-align: center;
+    line-height: 16px;
+  }
+  
+  #save-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+
+  
+ 
+  #sections-list .section-header:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark {
+    background-color: #353232; /* Darker background color */
+  }
+  
+.section-info .list-icon {
+    margin-right: 6px; /* Adjust the spacing as per your preference */
+    margin-left: 6px;
+  }
+  .fa-pencil-alt {
+    color: #070707; /* Darker color for the pencil icon */
+  }
+  /* CSS */
+
+/* CSS */
+
+#save-button {
+    display: block;
+    width: 150px;
+    margin: 20px auto;
+    background-color:  #6C2D70;;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .spacer {
+    margin-right: 10px; /* Adjust the value as per your preference */
+  }
+  
+  .sections-list-container {
+    min-height: 200px;
+  }
+  
+  .sections-list li {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+  }
+  
+  .dragging {
+    opacity: 0.5;
+  }
+  
+  /* Description icon styles */
+  .description-icon {
+    cursor: pointer;
+  }
+  
+  .description {
+    display: none;
+    margin-top: 5px;
+    padding: 5px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+  }
+  
+  .description.show {
+    display: block;
+  }
+ 
+  /* Add spacing between list items */
+  #sections-list li {
+    margin-bottom: 15px;
+  }

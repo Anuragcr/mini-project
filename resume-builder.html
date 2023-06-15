@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="resume-builder.css">
+  <style>
+    /* Add custom styling for the dragged section */
+    .dragged {
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <h2 class="header">Select your sections</h2>
+
+  <ul id="sections-list">
+    <li draggable="true">
+      <div class="section-header">
+        <div class="menu-icon">
+          <i class="fas fa-bars"></i>
+          <span class="list-icon">&#x24D8;</span>
+        </div>
+        <span class="section-name">Profile Summary</span>
+        <button class="edit-button">
+          <i class="fas fa-pencil-alt"></i>
+        </button>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </li>
+
+    <li draggable="true">
+      <div class="section-header">
+        <div class="menu-icon">
+          <i class="fas fa-bars"></i>
+          <span class="list-icon">&#x24D8;</span>
+        </div>
+        <span class="section-name">Academic and Curricular</span>
+        <button class="edit-button">
+          <i class="fas fa-pencil-alt"></i>
+        </button>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </li>
+
+    <li draggable="true">
+      <div class="section-header">
+        <div class="menu-icon">
+          <i class="fas fa-bars"></i>
+          <span class="list-icon">&#x24D8;</span>
+        </div>
+        <span class="section-name">Summer Internship</span>
+        <button class="edit-button">
+          <i class="fas fa-pencil-alt"></i>
+        </button>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </li>
+
+    <!-- Existing sections -->
+    <li draggable="true">
+      <div class="section-header">
+        <div class="menu-icon">
+          <i class="fas fa-bars"></i>
+          <span class="list-icon">&#x24D8;</span>
+        </div>
+        <span class="section-name">Work Experience</span>
+        <button class="edit-button">
+          <i class="fas fa-pencil-alt"></i>
+        </button>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </li>
+
+    <li draggable="true">
+      <div class="section-header">
+        <div class="menu-icon">
+          <i class="fas fa-bars"></i>
+          <span class="list-icon">&#x24D8;</span>
+        </div>
+        <span class="section-name">Projects</span>
+        <button class="edit-button">
+          <i class="fas fa-pencil-alt"></i>
+        </button>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </li>
+
+    <li draggable="true">
+      <div class="section-header">
+        <div class="menu-icon">
+          <i class="fas fa-bars"></i>
+          <span class="list-icon">&#x24D8;</span>
+        </div>
+        <span class="section-name">Certifications</span>
+        <button class="edit-button">
+          <i class="fas fa-pencil-alt"></i>
+        </button>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </li>
+
+    <li draggable="true">
+      <div class="section-header">
+        <div class="menu-icon">
+          <i class="fas fa-bars"></i>
+          <span class="list-icon">&#x24D8;</span>
+        </div>
+        <span class="section-name">Leadership Positions</span>
+        <button class="edit-button">
+          <i class="fas fa-pencil-alt"></i>
+        </button>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </li>
+
+    <li draggable="true">
+      <div class="section-header">
+        <div class="menu-icon">
+          <i class="fas fa-bars"></i>
+          <span class="list-icon">&#x24D8;</span>
+        </div>
+        <span class="section-name">Extracurricular Activities</span>
+        <button class="edit-button">
+          <i class="fas fa-pencil-alt"></i>
+        </button>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </li>
+
+    <li draggable="true">
+      <div class="section-header">
+        <div class="menu-icon">
+          <i class="fas fa-bars"></i>
+          <span class="list-icon">&#x24D8;</span>
+        </div>
+        <span class="section-name">Education</span>
+        <button class="edit-button">
+          <i class="fas fa-pencil-alt"></i>
+        </button>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </li>
+  </ul>
+
+  <button id="save-button" disabled>Save and Next</button>
+
+  <script>
+    // Section descriptions
+    const sectionDescriptions = {
+      "Profile Summary": "This section provides a brief summary of your professional profile, highlighting your key skills, achievements, and career objectives.",
+      "Academic and Curricular": "In this section, you can showcase your academic qualifications, courses, projects, and any other relevant academic achievements.",
+      "Summer Internship": "This section allows you to detail your experience and responsibilities during a summer internship or any other relevant short-term work experience.",
+      "Work Experience": "In this section, you can list your previous work experiences, including job positions, companies, duration, and key responsibilities.",
+      "Projects": "This section enables you to showcase your notable projects, including personal projects, group projects, or any other significant work you have completed.",
+      "Certifications": "Here, you can mention any certifications or professional qualifications you have obtained, such as online courses, workshops, or industry certifications.",
+      "Leadership Positions": "In this section, you can highlight any leadership positions you have held, such as student organization roles, team lead positions, or community involvement.",
+      "Extracurricular Activities": "This section allows you to showcase your involvement in extracurricular activities, such as clubs, sports, volunteering, or any other non-academic pursuits.",
+      "Education": "In this section, you can provide details about your educational background, including degrees, majors, institutions, and relevant academic achievements."
+    };
+
+    // Get all section elements
+    const sectionElements = document.querySelectorAll("#sections-list li");
+
+    // Add event listeners for drag and drop
+    sectionElements.forEach((sectionElement) => {
+      sectionElement.addEventListener("dragstart", handleDragStart);
+      sectionElement.addEventListener("dragover", handleDragOver);
+      sectionElement.addEventListener("dragend", handleDragEnd);
+    });
+
+    // Drag and drop functions
+    let draggedSection = null;
+
+    function handleDragStart(event) {
+      draggedSection = this;
+      this.classList.add("dragged");
+    }
+
+    function handleDragOver(event) {
+      event.preventDefault();
+      const targetSection = this;
+      if (draggedSection !== targetSection) {
+        const sectionsList = targetSection.parentNode;
+        sectionsList.insertBefore(draggedSection, targetSection);
+      }
+    }
+
+    function handleDragEnd(event) {
+      this.classList.remove("dragged");
+    }
+
+    // Add event listeners for section descriptions
+    const sectionHeaders = document.querySelectorAll(".section-header");
+    sectionHeaders.forEach((sectionHeader) => {
+      const sectionName = sectionHeader.querySelector(".section-name").textContent;
+      const sectionDescription = sectionDescriptions[sectionName];
+      sectionHeader.addEventListener("click", () => showSectionDescription(sectionDescription));
+      sectionHeader.addEventListener("mouseout", hideSectionDescription);
+    });
+
+    // Show section description popup
+    function showSectionDescription(description) {
+      const descriptionPopup = document.createElement("div");
+      descriptionPopup.className = "section-description-popup";
+      descriptionPopup.textContent = description;
+      document.body.appendChild(descriptionPopup);
+    }
+
+    // Hide section description popup
+    function hideSectionDescription() {
+      const descriptionPopup = document.querySelector(".section-description-popup");
+      if (descriptionPopup) {
+        descriptionPopup.remove();
+      }
+    }
+    function handleSectionNameEdit(sectionHeader, sectionName) {
+  sectionName.contentEditable = true;
+  sectionName.focus();
+  sectionName.addEventListener('blur', () => {
+    sectionName.contentEditable = false;
+    sectionHeader.classList.remove('dark');
+    const newName = sectionName.textContent.trim();
+    if (newName !== sections[index].name) {
+      sections[index].name = newName;
+      saveButton.disabled = false; // Enable the save button
+    }
+    editButton.innerHTML = '<i class="fas fa-pencil-alt"></i>'; // Change button icon back to pencil
+    editButton.removeEventListener('click', handleSaveButtonClick); // Remove the save button click event listener
+    editButton.addEventListener('click', handleEditButtonClick); // Add back the edit button click event listener
+    resetListStyles();
+  });
+}
+
+// Function to handle edit button click
+function handleEditButtonClick() {
+  const sectionHeader = this.parentElement;
+  const sectionName = sectionHeader.querySelector('.section-name');
+  sectionHeaders.forEach((header, i) => {
+    if (header !== sectionHeader) {
+      header.classList.add('dark'); // Apply dark style to the other list items
+    }
+  });
+  sectionHeader.classList.remove('dark');
+  handleSectionNameEdit(sectionHeader, sectionName);
+  this.innerHTML = '<i class="fas fa-save"></i> Save'; // Change button text to "Save"
+  this.removeEventListener('click', handleEditButtonClick); // Remove the edit button click event listener
+  this.addEventListener('click', handleSaveButtonClick); // Add save button click event listener
+}
+
+// Function to handle save button click
+function handleSaveButtonClick() {
+  console.log('Changes saved successfully!');
+  saveButton.disabled = true; // Disable the save button
+  resetListStyles();
+}
+
+// Function to reset the list item styles
+function resetListStyles() {
+  sectionHeaders.forEach((header) => {
+    header.classList.remove('dark'); // Remove dark style from all list items
+  });
+}
+const sections = [
+  { name: "Profile Summary", enabled: true },
+  { name: "Academic and Co-curricular Achievements", enabled: true },
+  { name: "Summer Internship Experience", enabled: true },
+  { name: "Work Experience", enabled: true },
+  { name: "Projects", enabled: true },
+  { name: "Certifications", enabled: true },
+  { name: "Leadership Positions", enabled: true },
+  { name: "Extracurricular", enabled: true },
+  { name: "Education", enabled: true }
+];
+// Get all the section headers
+
+
+// Loop through each section header
+sectionHeaders.forEach((sectionHeader, index) => {
+  const sectionName = sectionHeader.querySelector('.section-name');
+
+  // Set initial section name
+  sectionName.textContent = sections[index].name;
+
+  // Add event listener to the edit button for editing section name
+  const editButton = sectionHeader.querySelector('.edit-button');
+  editButton.addEventListener('click', handleEditButtonClick);
+});
+
+  </script>
+</body>
+</html>
